@@ -1,0 +1,29 @@
+version: '3'
+services:
+  database:
+    image: mariadb:10.6
+    container_name: mariadb10.6
+    environment:
+      - MARIADB_ROOT_PASSWORD=1111
+      - MARIADB_ROOT_HOST=%
+      - MARIADB_DATABASE=momoapps
+    command: [ '--character-set-server=utf8mb4',
+      '--collation-server=utf8mb4_unicode_ci']
+    ports:
+      - "3306:3306"
+    restart: always
+    volumes:
+      - ./database/sql:/docker-entrypoint-initdb.d
+
+  # 로컬 작업시 필요없음
+  # backend:
+  #   build: ./backend
+  #   container_name: backend-nest
+  #   depends_on:
+  #     - database
+  #   volumes:
+  #     - ./backend:/home/node/app
+  #   ports:
+  #     - "8080:8080"
+  #   environment: 
+  #     - DBHOST=database
