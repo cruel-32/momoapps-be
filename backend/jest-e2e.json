@@ -1,0 +1,6 @@
+{
+    "rootDir": ".",
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/../src/$1",
+    }
+}
