@@ -2,10 +2,12 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
+  ManyToMany,
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
+import { Role } from './role.entity';
 @Entity({ name: 'users' })
 export class User {
   @PrimaryGeneratedColumn()
@@ -14,14 +16,14 @@ export class User {
   @Column({ length: 20 })
   name: string;
 
-  @Column({ length: 100 })
+  @Column({ length: 50 })
   email: string;
 
-  @Column({ length: 80 })
-  password: string;
+  @Column({ length: 100 })
+  hash: string;
 
-  @Column({ length: 20, default: 'GUEST' })
-  role: string;
+  @ManyToMany(() => Role)
+  roles: Role;
 
   @CreateDateColumn()
   createdAt: Date;
