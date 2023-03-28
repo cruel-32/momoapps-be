@@ -3,19 +3,20 @@ import {
   PrimaryGeneratedColumn,
   Column,
   OneToMany,
-  RelationId,
+  ManyToOne,
 } from 'typeorm';
 
 @Entity({ name: 'categories' })
 export class Category {
   @PrimaryGeneratedColumn()
-  @RelationId((category: Category) => category.children)
   id: number;
 
   @Column({ length: 20 })
   name: string;
 
-  @OneToMany((type) => Category, (category) => category.id)
-  // @RelationId((category: Category) => category.id)
-  children: number[];
+  @ManyToOne((type) => Category, (category) => category.children)
+  parent: Category;
+
+  @OneToMany((type) => Category, (category) => category.parent)
+  children: Category[];
 }
