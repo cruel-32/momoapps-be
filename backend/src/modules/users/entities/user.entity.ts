@@ -2,12 +2,12 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  ManyToMany,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToOne,
 } from 'typeorm';
 
-import { Role } from './role.entity';
+import { RoleManagings } from './roleManagings.entity';
 @Entity({ name: 'users' })
 export class User {
   @PrimaryGeneratedColumn()
@@ -22,8 +22,8 @@ export class User {
   @Column({ length: 100 })
   hash: string;
 
-  @ManyToMany(() => Role)
-  roles: Role;
+  @OneToOne(() => RoleManagings)
+  roles: RoleManagings;
 
   @CreateDateColumn()
   createdAt: Date;
