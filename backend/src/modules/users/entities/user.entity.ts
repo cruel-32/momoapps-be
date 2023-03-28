@@ -7,7 +7,7 @@ import {
   OneToOne,
 } from 'typeorm';
 
-import { RoleManagings } from './roleManagings.entity';
+import { Managings } from './managings.entity';
 @Entity({ name: 'users' })
 export class User {
   @PrimaryGeneratedColumn()
@@ -22,8 +22,8 @@ export class User {
   @Column({ length: 100 })
   hash: string;
 
-  @OneToOne(() => RoleManagings)
-  roles: RoleManagings;
+  @OneToOne(() => Managings)
+  roles: Managings;
 
   @CreateDateColumn()
   createdAt: Date;

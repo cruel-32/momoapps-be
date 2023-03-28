@@ -4,9 +4,9 @@ import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
 import { User } from './entities/user.entity';
 import { Role } from './entities/role.entity';
-import { RoleManagings } from './entities/roleManagings.entity';
+import { Managings } from './entities/managings.entity';
 @Module({
-  imports: [TypeOrmModule.forFeature([User, Role, RoleManagings])],
+  imports: [TypeOrmModule.forFeature([User, Role, Managings])],
   controllers: [UsersController],
   providers: [UsersService],
 })
