@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   Query,
+  BadRequestException,
 } from '@nestjs/common';
 import { Pagination } from 'nestjs-typeorm-paginate';
 
@@ -30,7 +31,7 @@ export class CategoriesController {
   }
 
   @Get('/paging')
-  async findWithPaging(
+  findWithPaging(
     @Query('page') page = 1,
     @Query('limit') limit = 10,
   ): Promise<Pagination<Category>> {
