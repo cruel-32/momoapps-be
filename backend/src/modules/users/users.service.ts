@@ -1,11 +1,53 @@
+import * as uuid from 'uuid';
 import { Injectable } from '@nestjs/common';
+
+import { EmailService } from '@/modules/email/email.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { UserInfo } from './UserInfo';
 
 @Injectable()
 export class UsersService {
-  create(createUserDto: CreateUserDto) {
+  constructor(private emailService: EmailService) {}
+
+  async create(createUserDto: CreateUserDto) {
+    const { email } = createUserDto;
+    await this.checkUserExists(email);
+
+    const signupVerifyToken = uuid.v1();
+
+    await this.save(createUserDto, signupVerifyToken);
+    await this.sendMemberJoinEmail(email, signupVerifyToken);
+
     return 'This action adds a new user';
+  }
+
+  private checkUserExists(email: string) {
+    return false;
+  }
+
+  private save(createUserDto: CreateUserDto, signupVerifyToken: string) {
+    return;
+  }
+
+  private async sendMemberJoinEmail(email: string, signupVerifyToken: string) {
+    this.emailService.sendMemberJoinVerification(email, signupVerifyToken);
+    return;
+  }
+
+  async verifyEmail(signupVerifyToken: string): Promise<string> {
+    // TODO
+    throw new Error('Method not implemented');
+  }
+
+  async login(email: string, password: string): Promise<string> {
+    // TODO
+    throw new Error('Method not implemented');
+  }
+
+  async getUserInfo(id: string): Promise<UserInfo> {
+    // TODO
+    throw new Error('Method not implemented');
   }
 
   findAll() {
