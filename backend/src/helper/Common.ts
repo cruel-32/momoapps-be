@@ -13,10 +13,7 @@ export function parseIntPageMeta<T>(pagination: Pagination<T>) {
     meta: {
       ...pagination.meta,
       currentPage: parseInt(pagination.meta.currentPage.toString() || '0', 10),
-      itemsPerPage: parseInt(
-        pagination.meta.itemsPerPage.toString() || '0',
-        10,
-      ),
+      itemsPerPage: parseInt(pagination.meta.itemsPerPage.toString() || '0', 10),
     },
   };
 }

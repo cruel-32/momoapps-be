@@ -1,20 +1,6 @@
+import { registerAs } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { config } from 'dotenv';
-import { join } from 'path';
-
-console.log('process.env.NODE_ENV : ', process.env.NODE_ENV);
-
-config({
-  path: join(
-    __dirname,
-    '..',
-    process.env.NODE_ENV === 'development' ? '.env' : '.env.prod',
-  ),
-});
-
-console.log('process.env.DATABASE_HOST : ', process.env.DATABASE_HOST);
-console.log('process.env.DATABASE_USERNAME : ', process.env.DATABASE_USERNAME);
-console.log('process.env.DATABASE_DB : ', process.env.DATABASE_DB);
+import * as Joi from 'joi';
 
 export const TypeOrmConfig: TypeOrmModuleOptions = {
   type: 'mariadb',
@@ -28,3 +14,19 @@ export const TypeOrmConfig: TypeOrmModuleOptions = {
   // synchronize: process.env.NODE_ENV === 'development',
   synchronize: true,
 };
+
+export const EmailConfig = registerAs('email', () => ({
+  service: process.env.EMAIL_SERVICE,
+  auth: {
+    user: process.env.EMAIL_AUTH_USER,
+    pass: process.env.EMAIL_AUTH_PASSWORD,
+  },
+  baseUrl: process.env.EMAIL_BASE_URL,
+}));
+
+export const validationSchema = Joi.object({
+  EMAIL_SERVICE: Joi.string().required(),
+  EMAIL_AUTH_USER: Joi.string().required(),
+  EMAIL_AUTH_PASSWORD: Joi.string().required(),
+  EMAIL_BASE_URL: Joi.string().required().uri(),
+});
