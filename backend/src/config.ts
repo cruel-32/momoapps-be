@@ -2,6 +2,8 @@ import { registerAs } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import * as Joi from 'joi';
 
+console.log('process.env ::::: ', process.env);
+
 export const TypeOrmConfig: TypeOrmModuleOptions = {
   type: 'mariadb',
   host: process.env.DATABASE_HOST,

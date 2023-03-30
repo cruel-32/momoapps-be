@@ -8,10 +8,11 @@ import { CategoriesModule } from './modules/categories/categories.module';
 import { UsersModule } from './modules/users/users.module';
 import { PostsModule } from './modules/posts/posts.module';
 
+console.log('TypeOrmConfig ::::: ', TypeOrmConfig);
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: [`${__dirname}/env/.${process.env.NODE_ENV}.env`],
+      envFilePath: [`./env/.${process.env.NODE_ENV}.env`],
       load: [EmailConfig],
       isGlobal: true,
       validationSchema,
