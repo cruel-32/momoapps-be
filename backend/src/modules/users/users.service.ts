@@ -17,9 +17,13 @@ export class UsersService {
     const signupVerifyToken = uuid.v1();
 
     await this.save(createUserDto, signupVerifyToken);
-    await this.sendMemberJoinEmail(email, signupVerifyToken);
 
-    return 'This action adds a new user';
+    if (process.env.NODE_ENV !== 'development') {
+      await this.sendMemberJoinEmail(email, signupVerifyToken);
+      return '메일함을 확인하고 인증하세요';
+    }
+
+    return '가입되었습니다';
   }
 
   private checkUserExists(email: string) {

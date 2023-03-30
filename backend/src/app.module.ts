@@ -3,16 +3,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { join } from 'path';
-import { TypeOrmConfig, EmailConfig, validationSchema } from './config';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { UsersModule } from './modules/users/users.module';
 import { PostsModule } from './modules/posts/posts.module';
+import { TypeOrmConfig, EmailConfig, validationSchema } from '../config/config';
 
-console.log('TypeOrmConfig ::::: ', TypeOrmConfig);
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: [`./env/.${process.env.NODE_ENV}.env`],
+      envFilePath: [`./config/env/.${process.env.NODE_ENV}.env`],
       load: [EmailConfig],
       isGlobal: true,
       validationSchema,

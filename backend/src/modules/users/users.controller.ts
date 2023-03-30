@@ -14,17 +14,15 @@ export class UsersController {
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
-
+  // http://127.0.0.1:8080/api/users/email-verify?signupVerifyToken=3a18e8d0-ceef-11ed-860b-9121332645cc
   @Post('/email-verify')
   async verifyEmail(@Query() dto: VerifyEmailDto): Promise<string> {
-    console.log(dto);
     const { signupVerifyToken } = dto;
     return await this.usersService.verifyEmail(signupVerifyToken);
   }
 
   @Post('/login')
   async login(@Body() dto: UserLoginDto) {
-    console.log(dto);
     const { email, password } = dto;
     return await this.usersService.login(email, password);
   }
