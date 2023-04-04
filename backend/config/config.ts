@@ -18,8 +18,7 @@ export const TypeOrmConfig: TypeOrmModuleOptions = {
   database: process.env.DATABASE_DB,
   autoLoadEntities: true,
   logging: true,
-  // synchronize: process.env.NODE_ENV === 'development',
-  synchronize: true,
+  synchronize: process.env.NODE_ENV === 'development',
 };
 
 export const EmailConfig = registerAs('email', () => ({

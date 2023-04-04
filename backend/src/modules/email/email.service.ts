@@ -41,6 +41,8 @@ export class EmailService {
             </form>
         `,
     };
-    return await this.transporter.sendMail(mailOptions);
+    const result = await this.transporter.sendMail(mailOptions);
+    console.log('result ::::: ', result);
+    return result;
   }
 }
