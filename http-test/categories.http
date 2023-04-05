@@ -1,0 +1,23 @@
+@endpoint=http://127.0.0.1:8080
+
+### category 불러오기
+GET {{endpoint}}/api/categories HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInN1YiI6MSwibmFtZSI6IkFETUlOIiwiaWF0IjoxNjExMTk4MDM4LCJleHAiOjE2MTE4MDI4Mzh9.BFihUnQEQeazY-pwAXzafYOI6adNodDEe1oREdLFOWY
+
+### category 페이징 불러오기
+GET {{endpoint}}/api/categories/paging?page=1&limit=2 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInN1YiI6MSwibmFtZSI6IkFETUlOIiwiaWF0IjoxNjExMTk4MDM4LCJleHAiOjE2MTE4MDI4Mzh9.BFihUnQEQeazY-pwAXzafYOI6adNodDEe1oREdLFOWY
+
+### category 페이징 불러오기
+GET {{endpoint}}/api/categories/paging HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInN1YiI6MSwibmFtZSI6IkFETUlOIiwiaWF0IjoxNjExMTk4MDM4LCJleHAiOjE2MTE4MDI4Mzh9.BFihUnQEQeazY-pwAXzafYOI6adNodDEe1oREdLFOWY
+
+
+### category 생성
+POST {{endpoint}}/api/categories/ HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInN1YiI6MSwibmFtZSI6IkFETUlOIiwiaWF0IjoxNjExMTk4MDM4LCJleHAiOjE2MTE4MDI4Mzh9.BFihUnQEQeazY-pwAXzafYOI6adNodDEe1oREdLFOWY
+Content-Type: application/json
+
+{
+    "name" : "아무개",
+}
