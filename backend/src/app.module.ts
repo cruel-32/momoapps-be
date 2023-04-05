@@ -6,13 +6,18 @@ import { join } from 'path';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { UsersModule } from './modules/users/users.module';
 import { PostsModule } from './modules/posts/posts.module';
-import { TypeOrmConfig, EmailConfig, validationSchema } from '../config/config';
+import {
+  TypeOrmConfig,
+  EmailConfig,
+  AuthConfig,
+  validationSchema,
+} from '../config/config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: [`./config/env/.${process.env.NODE_ENV}.env`],
-      load: [EmailConfig],
+      load: [AuthConfig, EmailConfig],
       isGlobal: true,
       validationSchema,
     }),

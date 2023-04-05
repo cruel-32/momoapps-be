@@ -1,6 +1,6 @@
 @endpoint=http://127.0.0.1:8080
 
-### category 생성
+### user 생성
 POST {{endpoint}}/api/users/ HTTP/1.1
 Content-Type: application/json
 
@@ -13,3 +13,13 @@ Content-Type: application/json
 ### email 인증
 POST {{endpoint}}/api/users/email-verify?signupVerifyToken=3a18e8d0-ceef-11ed-860b-9121332645cc HTTP/1.1
 Content-Type: application/json
+
+### login
+POST {{endpoint}}/api/users/login HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInN1YiI6MSwibmFtZSI6IkFETUlOIiwiaWF0IjoxNjExMTk4MDM4LCJleHAiOjE2MTE4MDI4Mzh9.BFihUnQEQeazY-pwAXzafYOI6adNodDEe1oREdLFOWY
+Content-Type: application/json
+
+{
+   "email" : "cshee8508@gmail.com",
+    "password" : "12345678"
+}

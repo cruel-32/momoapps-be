@@ -31,6 +31,10 @@ export const EmailConfig = registerAs('email', () => ({
   host: process.env.EMAIL_HOST,
 }));
 
+export const AuthConfig = registerAs('auth', () => ({
+  secret: process.env.SECRET,
+}));
+
 export const validationSchema = Joi.object({
   EMAIL_SERVICE: Joi.string().required(),
   EMAIL_AUTH_USER: Joi.string().required(),
