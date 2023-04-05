@@ -1,4 +1,11 @@
 import { DataSource } from 'typeorm';
+import { config } from 'dotenv';
+import * as path from 'path';
+
+const envPath = path.join(__dirname, '../config/env');
+config({
+  path: path.join(`${envPath}/.${process.env.NODE_ENV}.env`),
+});
 
 export const AppDataSource = new DataSource({
   type: 'mariadb',
@@ -8,7 +15,7 @@ export const AppDataSource = new DataSource({
   password: process.env.DATABASE_PASSWORD,
   synchronize: false,
   migrationsRun: false,
-  migrations: [__dirname + '/**/migrations/*.js'],
+  migrations: [path.join(__dirname, '../**/migrations/*.js')],
   migrationsTableName: 'migrations',
-  entities: [__dirname + '/**/*.entity{.ts, .js}'],
+  entities: [path.join(__dirname, '/**/*.entity{.ts, .js}')],
 });
