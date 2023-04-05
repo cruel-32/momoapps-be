@@ -1,12 +1,6 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  OneToMany,
-  ManyToOne,
-} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from 'typeorm';
 
-@Entity({ name: 'categories' })
+@Entity({ name: 'Category' })
 export class Category {
   @PrimaryGeneratedColumn()
   id: number;

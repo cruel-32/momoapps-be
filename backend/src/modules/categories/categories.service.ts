@@ -2,11 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import {
-  paginate,
-  Pagination,
-  IPaginationOptions,
-} from 'nestjs-typeorm-paginate';
+import { paginate, Pagination, IPaginationOptions } from 'nestjs-typeorm-paginate';
 
 import { parseIntPageMeta } from '@/helper/Common';
 
@@ -28,9 +24,7 @@ export class CategoriesService {
     return this.categoriesRepository.find();
   }
 
-  async findWithPaging(
-    options: IPaginationOptions,
-  ): Promise<Pagination<Category>> {
+  async findWithPaging(options: IPaginationOptions): Promise<Pagination<Category>> {
     const queryBuilder = this.categoriesRepository.createQueryBuilder('c');
     queryBuilder.orderBy('c.id', 'ASC'); // Or whatever you need to do
 
