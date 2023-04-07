@@ -32,7 +32,7 @@ export const EmailConfig = registerAs('email', () => ({
 }));
 
 export const AuthConfig = registerAs('auth', () => ({
-  secret: process.env.SECRET,
+  secret: process.env.SERCRET,
 }));
 
 export const validationSchema = Joi.object({

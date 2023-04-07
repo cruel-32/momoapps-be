@@ -16,7 +16,7 @@ Content-Type: application/json
 
 ### login
 POST {{endpoint}}/api/users/login HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInN1YiI6MSwibmFtZSI6IkFETUlOIiwiaWF0IjoxNjExMTk4MDM4LCJleHAiOjE2MTE4MDI4Mzh9.BFihUnQEQeazY-pwAXzafYOI6adNodDEe1oREdLFOWY
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInN1YiI6MSwibmFtZSI6IkFETUlOIiwiaWF0IjoxNjExMTk4MDM4LCJleHAiOjE2MTE4MDI4Mzh9.BFihUnQEQeazY-pwAXzafYOI6adNodDEe1oREdLFOWY
 Content-Type: application/json
 
 {

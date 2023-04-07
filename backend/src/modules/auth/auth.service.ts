@@ -15,7 +15,8 @@ export class AuthService {
 
   login(user: User) {
     const payload = { ...user };
-    console.log('user ::::: ', user);
+    console.log('payload ::::: ', payload);
+    console.log('this.config ::::: ', this.config);
 
     return jwt.sign(payload, this.config.secret, {
       expiresIn: '1d',
