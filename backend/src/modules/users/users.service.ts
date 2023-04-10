@@ -8,7 +8,7 @@ import { AuthService } from '@/modules/auth/auth.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserEntity } from './entities/user.entity';
-import { UserInfo } from './UserInfo';
+import { UserInfoDto } from '@/modules/users/dto/user-info.dto';
 
 @Injectable()
 export class UsersService {
@@ -38,12 +38,14 @@ export class UsersService {
     return '가입되었습니다';
   }
 
-  private checkUserExists(email: string) {
-    const user = this.usersRepository.findOne({
+  private async checkUserExists(email: string) {
+    const user = await this.usersRepository.findOne({
       where: { email },
     });
 
-    if (user) {
+    console.log('user ::::: ', user);
+
+    if (user?.id) {
       throw new BadRequestException('이미 가입된 이메일입니다');
     }
   }
@@ -101,9 +103,20 @@ export class UsersService {
     });
   }
 
-  async getUserInfo(id: number): Promise<UserInfo> {
-    // TODO
-    throw new Error('Method not implemented');
+  async getUserInfo(id: number): Promise<UserInfoDto> {
+    const user = await this.usersRepository.findOne({
+      where: { id },
+    });
+
+    if (!user) {
+      throw new NotFoundException('유저가 존재하지 않습니다');
+    }
+
+    return {
+      id,
+      name: user.name,
+      email: user.email,
+    };
   }
 
   findAll() {

@@ -23,3 +23,9 @@ Content-Type: application/json
    "email" : "cshee8508@gmail.com",
     "password" : "12345678"
 }
+
+
+### get user info
+GET {{endpoint}}/api/users/4 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImNzaCIsImVtYWlsIjoiY3NoZWU4NTA4QGdtYWlsLmNvbSIsImlhdCI6MTY4MTEyOTg3MSwiZXhwIjoxNjgxMjE2MjcxLCJhdWQiOiJleGFtcGxlLmNvbSIsImlzcyI6ImV4YW1wbGUuY29tIn0.k77A2AL3Wl8IZ1H646GHhbfAbl5QcJL88XZK4aY5lig
+Content-Type: application/json

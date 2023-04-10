@@ -8,17 +8,24 @@ import {
   Delete,
   Query,
   ParseIntPipe,
+  Headers,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@/guards/AuthGuard';
+import { AuthService } from '@/modules/auth/auth.service';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { VerifyEmailDto } from './dto/verify-email.dto';
 import { UserLoginDto } from './dto/user-login.dto';
-import { UserInfo } from './UserInfo';
+import { UserInfoDto } from '@/modules/users/dto/user-info.dto';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly authService: AuthService,
+  ) {}
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
@@ -37,8 +44,12 @@ export class UsersController {
     return await this.usersService.login(email, password);
   }
 
+  @UseGuards(AuthGuard)
   @Get(':id')
-  async getUserInfo(@Param('id', ParseIntPipe) id: number): Promise<UserInfo> {
+  async getUserInfo(
+    @Headers() headers: any,
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<UserInfoDto> {
     return await this.usersService.getUserInfo(id);
   }
 
